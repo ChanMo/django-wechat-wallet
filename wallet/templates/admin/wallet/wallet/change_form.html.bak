@@ -1,0 +1,8 @@
+{% extends "admin/change_form.html" %}
+{% load i18n admin_urls admin_static admin_modify %}
+{% block object-tools-items %}
+<li>
+  <a href="recharge/" class="viewlink">充值</a>
+</li>
+{% endblock %}
+{% block submit_buttons_bottom %}{% endblock %}

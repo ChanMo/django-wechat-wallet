@@ -1,0 +1,19 @@
+{% extends "wallet/base.html" %}
+
+{% block title %}我的钱包{% endblock %}
+
+{% block main %}
+<div class="small-12 columns text-center">
+  <a class="float-right" href="{% url 'wallet:log_list' %}">log</a>
+  <div class="stat">￥&nbsp;{{ wallet.money }}</div>
+</div>
+
+<div class="small-12 columns">
+  <h4>充值</h4>
+  <ul>
+    {% for item in recharge_rules %}
+    <li><a href="{% url 'wallet:recharge' %}?rule_id={{ item.id }}">{{ item.money }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
