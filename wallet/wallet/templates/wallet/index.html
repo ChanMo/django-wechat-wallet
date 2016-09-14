@@ -1,0 +1,42 @@
+{% extends "order/base.html" %}
+{% block member_link %}_a{% endblock %}
+{% block title %}我的钱包{% endblock %}
+{% block content %}
+{% load staticfiles %}
+<div class="bg">
+  <img src="{% static 'foundation/images/my_order.jpg' %}">
+</div>
+<div class="main_hd clear">
+  <img src="{% static 'foundation/images/logo.png' %}">
+  <span class="right">{{ me.mobile }}</span>
+</div>
+<!--以上为背景与顶部信息-->
+<div class="my_wallet">
+  <div class="row">
+    <div class="small-12 columns">
+      <a href="{% url 'wallet:log_list' %}"><span class="right">交易记录</span></a>
+      <h1>我的钱包</h1>
+      <div class="wallet_money">￥{{ wallet.money }}</div>
+    </div>
+
+    <div class="small-12 columns">
+      <form method="post" action="{% url 'wallet:recharge' %}">
+        {% csrf_token %}
+        <div class="row">
+          <div class="small-12 columns">
+            <h1>充值金额</h1>
+            <div class="recharge">
+              {% for money, discount, level in recharge_rules %}
+              <input name="money" type="radio" value="{{ money }}" id="money_{{ money }}" {% if forloop.first %}checked{% endif %}><label for="money_{{ money }}">{{ money }}<span>打折{{ discount }}</span></label></br>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="small-12 columns order_bt">
+            <input type="submit" value="充值" class="button tiny xi_bt">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

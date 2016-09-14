@@ -1,0 +1,83 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-09-08 11:35+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:7 models.py:53
+msgid "wallet"
+msgstr "钱包"
+
+#: models.py:10 models.py:55
+msgid "money"
+msgstr "金额"
+
+#: models.py:11
+msgid "present"
+msgstr "赠送"
+
+#: models.py:13
+msgid "is show"
+msgstr "是否显示"
+
+#: models.py:19 models.py:20
+msgid "recharge rules"
+msgstr "充值规则"
+
+#: models.py:29
+msgid "member"
+msgstr "会员"
+
+#: models.py:30
+msgid "balance"
+msgstr "余额"
+
+#: models.py:32 models.py:57
+msgid "created"
+msgstr "创建时间"
+
+#: models.py:33
+msgid "updated"
+msgstr "更新时间"
+
+#: models.py:48
+msgid "recharge"
+msgstr "充值"
+
+#: models.py:49
+msgid "spend"
+msgstr "消费"
+
+#: models.py:50
+msgid "cash"
+msgstr "提现"
+
+#: models.py:54
+msgid "type"
+msgstr "类型"
+
+#: models.py:56
+msgid "description"
+msgstr "描述"
+
+#: models.py:63 models.py:64
+msgid "log"
+msgstr "记录"
+
+#: templates/admin/wallet/wallet/recharge.html:17
+msgid "Home"
+msgstr ""

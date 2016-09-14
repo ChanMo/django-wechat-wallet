@@ -1,0 +1,18 @@
+{% extends "order/base.html" %}
+{% block member_link %}_a{% endblock %}
+{% block title %}交易记录{% endblock %}
+{% block content %}
+<div class="row">
+  <table>
+    {% for log in object_list %}
+    <tr>
+      <td>{{ log.created }}</td>
+      <td>{{ log.get_type_display }}</td>
+      <td>{{ log.money }}</td>
+    </tr>
+    {% empty %}
+    <h1>empty</h1>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}
