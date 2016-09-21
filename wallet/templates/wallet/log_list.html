@@ -1,18 +1,19 @@
-{% extends "order/base.html" %}
-{% block member_link %}_a{% endblock %}
-{% block title %}交易记录{% endblock %}
-{% block content %}
+{% extends "wallet/base.html" %}
+
+{% block main %}
 <div class="row">
-  <table>
+  <div class="small-12 columns">
+  <table style="margin-top:20px;">
     {% for log in object_list %}
     <tr>
-      <td>{{ log.created }}</td>
-      <td>{{ log.get_type_display }}</td>
+      <td>{{ log.description }}</td>
       <td>{{ log.money }}</td>
+      <td>{{ log.created|date:"Y/m/d H:i" }}</td>
     </tr>
     {% empty %}
-    <h1>empty</h1>
+    <h2>交易记录为空</h2>
     {% endfor %}
   </table>
+  </div>
 </div>
 {% endblock %}

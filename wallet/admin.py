@@ -1,19 +1,17 @@
 from django.contrib import admin
-from .models import Wallet, Log, Rule
+from .models import Wallet, Log
 from . import models
 
-class RuleAdmin(admin.ModelAdmin):
-    pass
-
-class LogInline(admin.TabularInline):
-    model = Log
-    extra = 1
+class LogAdmin(admin.ModelAdmin):
+    list_display = ('wallet', 'description', 'money', 'created')
+    list_per_page = 12
+    list_filter = ('created',)
+    search_fields = ('description',)
 
 class WalletAdmin(admin.ModelAdmin):
     list_display = ('member', 'balance', 'created', 'updated')
     list_per_page = 12
-    list_filter = ['created', 'updated']
-    inlines = [LogInline]
+    list_filter = ('created', 'updated')
 
-admin.site.register(Rule, RuleAdmin)
 admin.site.register(Wallet, WalletAdmin)
+admin.site.register(Log, LogAdmin)

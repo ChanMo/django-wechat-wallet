@@ -8,12 +8,12 @@ with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
-    name = 'django_member_wallet',
-    version = '0.1',
+    name = 'django-wechat-wallet',
+    version = '0.1.4',
     packages = ['wallet'],
     include_package_data = True,
     license = 'BSD License',
-    description = 'wallet for wechat member',
+    description = 'change log template empty display',
     long_description = README,
     url = 'http://www.findchen.com/',
     author = 'Chen',

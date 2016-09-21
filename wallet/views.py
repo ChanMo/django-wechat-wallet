@@ -1,9 +1,6 @@
-from django.views.generic import TemplateView, ListView
-from django.http import HttpResponse
-from django.core.urlresolvers import reverse
-
+from django.views.generic import ListView, DetailView
 from wechat_member.views import WxMemberView
-from .models import Rule, Wallet, Log
+from .models import Wallet, Log
 
 class BaseView(WxMemberView):
     """
@@ -13,25 +10,25 @@ class BaseView(WxMemberView):
     def dispatch(self, request, *args, **kwargs):
         #super(WalletBase, self).dispatch(request, *args, **kwargs)
         try:
-            self.wallet = Wallet.objects.get(member=self.wx_member)
-        except AttritubeError:
+            result = Wallet.objects.get_or_create(
+                    member_id = request.session['wx_member_id']
+                    )
+            self.wallet = result[0]
+        except AttributeError:
+            """ if wx member is not exist """
             pass
-        except Wallet.DoesNotExist:
-            wallet = Wallet.objects.create(member=self.wx_member)
-            self.wallet = wallet
         return super(BaseView, self).dispatch(request, *args, **kwargs)
 
 
-class HomeView(BaseView, TemplateView):
+class HomeView(BaseView, DetailView):
     """
-    Home view
+    home view of wallet
     """
+    model = Wallet
     template_name = 'wallet/index.html'
-    def get_context_data(self, **kwargs):
-        context = super(Home, self).get_context_data(**kwargs)
-        context['recharge_rules'] = Rule.objects.filter(is_show=True)
-        context['wallet'] = self.wallet
-        return context
+
+    def get_object(self):
+        return self.wallet
 
 
 class LogListView(BaseView, ListView):
@@ -39,5 +36,7 @@ class LogListView(BaseView, ListView):
     wallet log list view
     """
     model = Log
+    template_name = 'wallet/logs.html'
+
     def get_queryset(self, **kwargs):
         return Log.objects.filter(wallet=self.wallet)
