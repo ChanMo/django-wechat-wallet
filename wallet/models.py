@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 from django.utils.translation import ugettext_lazy as _
+from django.core.exceptions import ValidationError
 from django.db import models
 from wechat_member.models import Member
 
@@ -40,6 +41,25 @@ class Log(models.Model):
 
     def __str__(self):
         return self.description
+
+    def clean_fields(self, exclude=None):
+        if self.pk is None and self.wallet_id is not None \
+                and self.money is not None:
+            wallet = Wallet.objects.get(pk=self.wallet.id)
+            result = wallet.balance + self.money
+            if result < 0:
+                raise ValidationError({
+                    'money':_("wallet balance is not enough")
+                    })
+
+
+    def save(self, *args, **kwargs):
+        """while create new, change wallet"""
+        if self.pk == None:
+            wallet = Wallet.objects.get(pk=self.wallet.id)
+            wallet.balance += self.money
+            wallet.save()
+        super(Log, self).save(*args, **kwargs)
 
     class Meta(object):
         verbose_name = _('log')
