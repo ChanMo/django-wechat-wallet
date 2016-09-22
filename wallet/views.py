@@ -14,7 +14,7 @@ class BaseView(WxMemberView):
                     member_id = request.session['wx_member_id']
                     )
             self.wallet = result[0]
-        except AttributeError:
+        except KeyError:
             """ if wx member is not exist """
             pass
         return super(BaseView, self).dispatch(request, *args, **kwargs)

@@ -9,11 +9,11 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name = 'django-wechat-wallet',
-    version = '0.1.4',
+    version = '0.1.5',
     packages = ['wallet'],
     include_package_data = True,
     license = 'BSD License',
-    description = 'change log template empty display',
+    description = 'Add KeyError to BaseView',
     long_description = README,
     url = 'http://www.findchen.com/',
     author = 'Chen',
