@@ -32,8 +32,10 @@ class Log(models.Model):
     """
     wallet = models.ForeignKey(Wallet, related_name='logs',\
             verbose_name=_('wallet'))
-    money = models.DecimalField(_('money'), max_digits=8, decimal_places=2)
-    description = models.CharField(_('description'), max_length=200)
+    money = models.DecimalField(_('money'), max_digits=8, decimal_places=2,\
+            help_text=_('if is decrease, insert -"'))
+    description = models.CharField(_('description'), max_length=200,\
+            help_text=_('insert description text'))
     created = models.DateTimeField(_('created'), auto_now_add=True)
 
     def __unicode__(self):

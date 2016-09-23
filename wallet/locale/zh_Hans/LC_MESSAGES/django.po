@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-22 18:08+0800\n"
+"POT-Creation-Date: 2016-09-23 11:37+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,7 +30,7 @@ msgstr "会员"
 msgid "balance"
 msgstr "余额"
 
-#: models.py:15 models.py:37
+#: models.py:15 models.py:39
 msgid "created"
 msgstr "创建时间"
 
@@ -43,14 +43,22 @@ msgid "money"
 msgstr "金额"
 
 #: models.py:36
+msgid "if is decrease, insert -\""
+msgstr "如果是消费，请输入负数金额！"
+
+#: models.py:37
 msgid "description"
 msgstr "描述"
 
-#: models.py:52
+#: models.py:38
+msgid "insert description text"
+msgstr "请输入交易描述"
+
+#: models.py:54
 msgid "wallet balance is not enough"
 msgstr "钱包余额不足"
 
-#: models.py:65 models.py:66
+#: models.py:67 models.py:68
 msgid "log"
 msgstr "记录"
 

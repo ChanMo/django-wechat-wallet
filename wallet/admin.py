@@ -12,6 +12,7 @@ class WalletAdmin(admin.ModelAdmin):
     list_display = ('member', 'balance', 'created', 'updated')
     list_per_page = 12
     list_filter = ('created', 'updated')
+    readonly_fields = ('balance','member')
 
 admin.site.register(Wallet, WalletAdmin)
 admin.site.register(Log, LogAdmin)
