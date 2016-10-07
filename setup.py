@@ -9,11 +9,11 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name = 'django-wechat-wallet',
-    version = '0.1.7',
+    version = '0.1.9',
     packages = ['wallet'],
     include_package_data = True,
     license = 'BSD License',
-    description = 'set wallet readonly, add log help text',
+    description = 'write test, add get_log_list, remove api balance change',
     long_description = README,
     url = 'http://www.findchen.com/',
     author = 'Chen',

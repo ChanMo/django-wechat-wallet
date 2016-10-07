@@ -1,3 +1,4 @@
+import sys
 from .models import Wallet, Log
 
 class WalletApi(object):
@@ -7,26 +8,27 @@ class WalletApi(object):
 
     def __init__(self, member_id):
         """ Get wallet by member id """
-        try:
-            self.wallet = Wallet.objects.get(member_id=member_id)
-        except Wallet.DoesNotExist:
-            print("Wallet does not exist")
-            self.wallet = None
+        """ add a member id check function later """
+        self.wallet,created = Wallet.objects.get_or_create(member_id=member_id)
 
-
-    def balance(self):
+    def get_balance(self):
         """ get balance """
         return self.wallet.balance
+
+    def get_log_list(self):
+        """ get log list """
+        log_list = self.wallet.logs
+        return log_list
+
+    def get_log(self, pk):
+        """ check before """
+        pass
 
 
     def make_trade(self, money, description):
         """ Always change the wallet first, then create log """
         balance = self.wallet.balance
-        change = balance + money
-        if (change) > 0:
-            self.wallet.balance = change
-            self.wallet.save()
-        else:
+        if (balance + money) < 0:
             print("Balance is not enough")
             return False
 
