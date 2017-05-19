@@ -5,10 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta content="telephone=no" name="format-detection" />
-    <title>{% block title %}红包{% endblock %}</title>
-    <link rel="stylesheet" href="http://cdn.bootcss.com/foundation/6.1.2/foundation-flex.min.css">
+    <title>{% block title %}我的钱包{% endblock %}</title>
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://juss.findchen.com/css/juss.min.css">
+    {% block css %}
+    {% endblock %}
   </head>
-  <body>
+  <body style="background:rgba(0,0,0,0.06);">
     {% block main %}
     {% endblock %}
   </body>

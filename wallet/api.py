@@ -20,21 +20,24 @@ class WalletApi(object):
         log_list = self.wallet.logs
         return log_list
 
-    def get_log(self, pk):
-        """ check before """
+    def draw(self, money):
+        """ Draw to real money """
         pass
 
+    def input(self, money):
+        """ input money """
+        pass
 
-    def make_trade(self, money, description):
-        """ Always change the wallet first, then create log """
-        balance = self.wallet.balance
-        if (balance + money) < 0:
-            print("Balance is not enough")
-            return False
+    # def make_trade(self, money, description):
+    #     """ Always change the wallet first, then create log """
+    #     balance = self.wallet.balance
+    #     if (balance + money) < 0:
+    #         print("Balance is not enough")
+    #         return False
 
-        log = Log.objects.create(
-                wallet = self.wallet,
-                money = money,
-                description = description,
-                )
-        return True
+    #     log = Log.objects.create(
+    #             wallet = self.wallet,
+    #             money = money,
+    #             description = description,
+    #             )
+    #     return True

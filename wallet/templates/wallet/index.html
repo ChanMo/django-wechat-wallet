@@ -1,13 +1,41 @@
 {% extends "wallet/base.html" %}
+{% block css %}
+<style>
+  tr {
+    border-bottom: 1px solid rgba(0,0,0,0.12);
+  }
+  td {
+    border: none !important;
+    padding: 0.2rem 0.5rem;
+    color: rgba(0,0,0,0.87);
+  }
+  td:first-child, td:last-child {
+    width: 1%;
+    text-wrap: nowrap;
+  }
+</style>
+{% endblock %}
 
 {% block main %}
-<div class="row">
-  <div class="small-12 columns">
-    <div class="callout" style="margin-top:20px;">
-      <a class="float-right" href="{% url 'wallet:log_list' %}">交易记录</a>
-      <h5>我的钱包</h5>
-      <div class="stat">￥{{ object.balance }}</div>
-    </div>
-  </div>
+<div class="top-bar bg-blue" style="height:3.5rem;line-height:3.5rem;font-size:0.85rem;">
+  <a href="javascript:window.history.back()" class="float-left">
+    <i class="fa fa-angle-left fa-lg"></i>
+  </a>
+  <span>&nbsp;&nbsp;&nbsp;&nbsp;钱包</span>
+  <a href="{% url 'wallet:log_list' %}" class="float-right">明细</a>
 </div>
+
+<div style="padding:1.5rem 1rem 2.5rem;color:white" class="bg-blue">
+  <p style="margin:0;"><small>钱包金额(元)</small></p>
+  <p><span style="font-size:3rem;font-weight:600;">{{ object.balance }}</span></p>
+</div>
+
+<table>
+  <tr>
+    <td><i class="fa fa-credit-card" style="color:#e91e63"></i></td>
+    <td style="padding-left:0;font-size:0.85rem;vertical-align:middle;">提现</td>
+    <td><i class="fa fa-angle-right"></i></td>
+  </tr>
+</table>
+
 {% endblock %}

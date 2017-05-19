@@ -1,19 +1,49 @@
 {% extends "wallet/base.html" %}
 
+{% block css %}
+<style>
+  tr {
+    border-bottom: 1px solid rgba(0,0,0,0.03);
+  }
+  td {
+    border: none !important;
+    padding: 0.2rem 0.5rem;
+    color: rgba(0,0,0,0.87);
+  }
+  td > span {
+    font-size: 0.75rem;
+    color: rgba(0,0,0,0.54);
+  }
+  td:last-child {
+    width: 20%;
+    vertical-align: middle;
+    text-align: center;
+    text-wrap: nowrap;
+    font-size: 1.2rem;
+    color: #e91e63;
+  }
+</style>
+{% endblock %}
+
 {% block main %}
-<div class="row">
-  <div class="small-12 columns">
-  <table style="margin-top:20px;">
-    {% for log in object_list %}
-    <tr>
-      <td>{{ log.description }}</td>
-      <td>{{ log.money }}</td>
-      <td>{{ log.created|date:"Y/m/d H:i" }}</td>
-    </tr>
-    {% empty %}
-    <h2>交易记录为空</h2>
-    {% endfor %}
-  </table>
-  </div>
+<div class="top-bar bg-white" style="line-height:3.5rem;height:3.5rem;margin-bottom:.5rem;border-bottom:1px solid rgba(0,0,0,0.06);">
+  <a href="javascript:window.history.back()">
+    <i class="fa fa-angle-left fa-lg" style="color:rgba(0,0,0,0.54);"></i>
+  </a>
+  <span style="color:rgba(0,0,0,0.87);">&nbsp;&nbsp;&nbsp;&nbsp;资金记录</span>
 </div>
+
+<table style="margin:0;">
+  {% for log in object_list %}
+  <tr>
+    <td>
+      <h6 style="margin-bottom:0;font-size:0.87rem;">{{ log.description }}</h6>
+      <span>{{ log.created|date:"Y/m/d H:i" }}</span>
+    </td>
+    <td>
+      {{ log.money }}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
 {% endblock %}
